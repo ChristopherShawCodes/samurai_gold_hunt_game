@@ -1,0 +1,38 @@
+*{
+    padding: 0 auto;
+    margin: 0 auto;
+}
+
+.card{
+    border: 2px solid black;
+    width: 200px;
+}
+
+.card_row{
+    display: flex;
+    padding-top: 30px;
+}
+
+.your_gold{
+    display: flex;
+}
+
+.gold {
+    border: 1px solid black;
+    display: inline-block;
+    padding: 5px;
+}
+
+#activities {
+    width: 800px;
+    display: flex;
+    margin: 0 auto;
+    padding-top: 50px;
+}
+
+#button{
+    width: 100px;
+    background-color: yellow;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
