@@ -12,7 +12,7 @@
     <div class="main">
         <h1>A Basic Blockchain Based Clicker Game</h1>
         <div class="your_gold">
-            <h3>Your Gold: <span class="gold">0</span></h3>
+            <h3>Your Gold: <span class="gold">{{session["gold"]}}</span></h3>
         </div>
         <div class="card_row">
             <form action="/process_money" method="POST" class="card">
