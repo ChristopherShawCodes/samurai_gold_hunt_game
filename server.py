@@ -1,6 +1,8 @@
 from flask import Flask, render_template, redirect, session, request
 #import the randint functionality, this provides the ability to provide 2 values as a range and it will return a random value within that range
 from random import randint
+#import the date/time functionality
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -15,12 +17,11 @@ def index():
     return render_template("index.html")
 
 
-@app.route('/process_money',methods=["POST"])
+@app.route('/process_money', methods=["POST"])
 def process():
     building = request.form["building"]
     if building == "farm":
         gold_to_add = randint(10,20)
-        print(gold_to_add)
     elif building == "cave":
         gold_to_add = randint(5,10)
     elif building == "house":
@@ -33,6 +34,13 @@ def process():
         #line 31 references line 15 on index.html
         #<h3>Your Gold: <span class="gold">{{session["gold"]}}</span></h3>
     session["gold"] += gold_to_add
+    #the following will be displayed in the "activities" area on the UI
+    session["activities"].append({
+        "gold": gold_to_add,
+        "building": building,
+        "time": datetime.now()
+    })
+    print(session["activities"])
     return redirect("/")
 
 

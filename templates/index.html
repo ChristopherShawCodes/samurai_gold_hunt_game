@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="main">
-        <h1>A Basic Blockchain Based Clicker Game</h1>
+        <h1 id="title">A Basic Blockchain Based Clicker Game</h1>
         <div class="your_gold">
             <h3>Your Gold: <span class="gold">{{session["gold"]}}</span></h3>
         </div>
@@ -36,13 +36,17 @@
             <form action="/process_money" method="POST" class="card">
                 <h1>Casino</h1>
                 <p>(earns/takes 0-50 gold)</p>
-                <input type="hidden" name="building" value="casino" />
+                <input type="hidden" name="building" value="casino"/>
                 <input type="submit" id="button" value="Find Gold!"/>
             </form>
         </div>
-        <div class="activities_row">
-            <h4 id="activities">Activities:</h4>
-            <textarea name="activities" id="activities" cols="30" rows="10"></textarea>
+        <div class="activities">
+            {% for activity in session
+            ["activities"] %}
+                <p>Earned {{ activity["gold"]}} 
+                from the {{activity["building"] }}
+                - {{activity["time"]}}</p>
+            {% endfor %}
         </div>
     </div>
 </body>
