@@ -3,13 +3,28 @@
     margin: 0 auto;
 }
 
+.background{
+    background-image: url('https://uploads.dailydot.com/207/4e/gifhistory2a.gif?auto=compress&fm=gif');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.main{
+    height: 930px;
+}
+
+
 #title{
     text-align: center;
     padding: 40px;
 }
 .card{
-    border: 2px solid black;
+    border: 2px solid whitesmoke;
     width: 200px;
+    opacity: 50%;
+    padding: 3px;
+    text-align: center;
+    height: 260px;
 }
 
 .card_row{
@@ -18,21 +33,43 @@
 }
 
 .your_gold{
-    display: flex;
+    display: inline-block;
+    color: black;
+    border: 2px solid whitesmoke;
+    padding: 20px;
+    margin-left: 140px;
+    background-color: whitesmoke;
+    opacity: 50%;
+    border-radius: 20px;
 }
 
 .gold {
-    border: 1px solid black;
+    border: 1px solid gray;
     display: inline-block;
     padding: 5px;
 }
 
+#tracker{
+    margin-right: 600px;
+}
+
 .activities {
     width: 800px;
-    margin: 0 auto;
     margin-top: 50px;
     border: 1px solid black;
+    border-radius: 20px;
+}
 
+.activity{
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-top: 50px;
+    text-align: center;
+    border: 1px solid white;
+    width: 1000px;
+    background-color: whitesmoke;
+    opacity: 50%;
+    border-radius: 20px;
 }
 
 #button{
@@ -40,4 +77,14 @@
     background-color: yellow;
     margin: 0 auto;
     margin-bottom: 20px;
+}
+
+
+.green{
+    color: green;
+}
+
+.red{
+    color: red;
+    font-size: 16px;
 }

@@ -9,44 +9,65 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/style.css') }}">
 </head>
 <body>
-    <div class="main">
-        <h1 id="title">A Basic Blockchain Based Clicker Game</h1>
-        <div class="your_gold">
-            <h3>Your Gold: <span class="gold">{{session["gold"]}}</span></h3>
-        </div>
-        <div class="card_row">
-            <form action="/process_money" method="POST" class="card">
-                <h1>Farm</h1>
-                <p>(earns 10-20 gold)</p>
-                <input type="hidden" name="building" value="farm" />
-                <input type="submit" id="button" value="Find Gold!"/>
-            </form>
-            <form action="/process_money" method="POST" class="card">
-                <h1>Cave</h1>
-                <p>(earns 5-10 gold)</p>
-                <input type="hidden" name="building" value="cave" />
-                <input type="submit" id="button" value="Find Gold!"/>
-            </form>
-            <form action="/process_money" method="POST" class="card">
-                <h1>House</h1>
-                <p>(earns 2-5 gold)</p>
-                <input type="hidden" name="building" value="house" />
-                <input type="submit" id="button" value="Find Gold!"/>
-            </form>
-            <form action="/process_money" method="POST" class="card">
-                <h1>Casino</h1>
-                <p>(earns/takes 0-50 gold)</p>
-                <input type="hidden" name="building" value="casino"/>
-                <input type="submit" id="button" value="Find Gold!"/>
-            </form>
-        </div>
-        <div class="activities">
-            {% for activity in session
-            ["activities"] %}
-                <p>Earned {{ activity["gold"]}} 
-                from the {{activity["building"] }}
-                - {{activity["time"]}}</p>
-            {% endfor %}
+    <div class="background">
+        <div class="main">
+            <h1 id="title">The Samurai Gold Hunt Game</h1>
+            <div class="your_gold">
+                <h3>Gold Acquired: <span class="gold">{{session["gold"]}}</span></h3>
+            {% if session["gold"] == 0 %}
+                <p class="green">Your Samurai Needs Gold! </p>
+            {% elif session["gold"] > 1 %}
+                <p class="green">Your Samurai Has Gold !</p>
+            {% else %}
+                <p class="red">Overdrawn Balance, Yakuza Is Near</p>
+            {% endif %}
+            </div>
+            <div class="card_row">
+                <form action="/process_money" method="POST" class="card">
+                    <h4>Community Farm</h4>
+                    <p>Work on the community farm to earn gold. Work hard for your gold, it's honest work.</p>
+                    <p>(earns 10-20 gold)</p>
+                    <input type="hidden" name="building" value="farm" />
+                    <input type="submit" id="button" value="Find Gold!"/>
+                </form>
+                <form action="/process_money" method="POST" class="card">
+                    <h4>Meditation Cave</h4>
+                    <p>Enter the meditation cave to earn a small reward in gold. The enlightened will be rewarded.</p>
+                    <p>(earns 5-10 gold)</p>
+                    <input type="hidden" name="building" value="cave" />
+                    <input type="submit" id="button" value="Find Gold!"/>
+                </form>
+                <form action="/process_money" method="POST" class="card">
+                    <h4>Samurai House</h4>
+                    <p>Rest in your Samurai House to earn a small reward in gold. Enjoy it while you can, gold doesn't come easy.</p>
+                    <p>(earns 2-5 gold)</p>
+                    <input type="hidden" name="building" value="house" />
+                    <input type="submit" id="button" value="Find Gold!"/>
+                </form>
+                <form action="/process_money" method="POST" class="card">
+                    <h4>Send On Mission</h4>
+                    <p>Send your samurai on a mission but be careful there is a possibility of losing Gold on your mission.</p>
+                    <p>(earns/takes 0-50 gold)</p>
+                    <input type="hidden" name="building" value="Samurai Mission"/>
+                    <input type="submit" id="button" value="Find Gold!"/>
+                </form>
+            </div>
+            <div class="activity">
+                <h3 id="tracker">Activity Tracker</h3>
+                <a href="/reset" id="tracker" class="btn btn-warning">Reset</a>
+                <div class="activities">
+                    {% for activity in session
+                    ["activities"] %}
+                        {% if activity["gold"] > 0 %}
+                        <p class="green">Entered the {{activity["building"] }} and returned with {{ activity["gold"]}} pieces of gold
+                        - {{activity["time"]}}</p>
+                    {% else %}
+                        <p class="red">Entered the {{activity["building"] }} and lost {{-activity["gold"]}} pieces of gold
+                        ...{{activity["time"]}}</p>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
         </div>
     </div>
 </body>
