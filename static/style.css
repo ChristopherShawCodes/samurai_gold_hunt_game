@@ -7,12 +7,12 @@
     background-image: url('https://uploads.dailydot.com/207/4e/gifhistory2a.gif?auto=compress&fm=gif');
     background-repeat: no-repeat;
     background-size: 100% 100%;
+    height: 100%;
 }
 
 .main{
     height: 930px;
 }
-
 
 #title{
     text-align: center;
@@ -25,6 +25,10 @@
     padding: 3px;
     text-align: center;
     height: 260px;
+}
+
+.card:hover {
+    opacity: 80% ;
 }
 
 .card_row{
@@ -41,6 +45,10 @@
     background-color: whitesmoke;
     opacity: 50%;
     border-radius: 20px;
+}
+
+.your_gold:hover{
+    opacity: 80%;
 }
 
 .gold {
@@ -71,6 +79,12 @@
     opacity: 50%;
     border-radius: 20px;
 }
+
+.activity:hover{
+    opacity: 80%;
+}
+
+
 
 #button{
     width: 100px;

@@ -1,3 +1,4 @@
+from os import remove
 from flask import Flask, render_template, redirect, session, request
 #import the randint functionality, this provides the ability to provide 2 values as a range and it will return a random value within that range
 from random import randint
@@ -35,12 +36,20 @@ def process():
         #<h3>Your Gold: <span class="gold">{{session["gold"]}}</span></h3>
     session["gold"] += gold_to_add
     #the following will be displayed in the "activities" area on the UI
-    session["activities"].append({
+    if len(session["activities"]) < 3:
+        session["activities"].append({
         "gold": gold_to_add,
         "building": building,
         "time": datetime.now()
     })
-    print(session["activities"])
+    else:
+        session["activities"].append({
+        "gold": gold_to_add,
+        "building": building,
+        "time": datetime.now()
+    })
+        session["activities"].remove(session["activities"][0])
+        print(session["activities"])
     return redirect("/")
 
 
